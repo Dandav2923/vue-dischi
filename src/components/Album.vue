@@ -1,19 +1,19 @@
 <template>
-  <div class="col card p-3 m-3">
+  <div class="col card p-3 m-3 text-center">
       <img
       class="w-100"
       :src="src"
       :alt="author"
     >
-    <h2 class="">
+    <h2 class="fs-4 text-uppercase text-center mt-2">
       {{ title }}
     </h2>
-    <h3 class="fs-6 fw-normal">
+    <h3 class="fs-6">
       {{ author }}
     </h3>
-    <h4 class="fs-5">
+    <span class="fs-6">
       {{ year }}
-    </h4>
+    </span>
   </div>
 </template>
 
