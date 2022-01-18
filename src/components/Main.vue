@@ -10,6 +10,17 @@
           :year="element.year"
         />
     </div>
+    <div class="row p-4">
+      <select id="select" 
+              class="form-select" 
+              aria-label="Default select example">
+        <option selected>Seleziona il tuo genere preferito</option>
+        <option value="rock">Rock</option>
+        <option value="pop">Pop</option>
+        <option value="jazz">Jazz</option>
+        <option value="metal">Metal</option>
+      </select>
+    </div>
   </div>
 </template>
 
