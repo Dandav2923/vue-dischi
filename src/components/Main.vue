@@ -12,7 +12,7 @@
     </div>
     <div class="row p-4">
       <Search 
-        @searchAlbum="searchAlbumFilter($event.target.value)"
+        @searchAlbum="filteredAlbum($event)"
          />
       <!-- <select 
         id="select" 
@@ -42,7 +42,8 @@ export default {
   data() {
     return {
       album: null,
-      filteredGenre:'',
+      filteredGenre:[],
+      // selectValue:'',
     }
   },
   created() {
@@ -50,53 +51,55 @@ export default {
       .get("https://flynn.boolean.careers/exercises/api/array/music")
       .then((response) => {
         this.album = response.data.response;
-        console.log(response.data.response);
+        this.filteredGenre = response.data.response;
+        // console.log(response.data.response);
       })
       .catch((error) => {
         console.log(error);
         });
   },
   methods: {
-    searchAlbumFilter(inputValue) {
-      this.filteredGenre = inputValue;
-    },
-    filteredArray(){
-      console.log('1');
-      // if(this.filteredGenre == 'selected' ){
-      //   return this.album
-      // }
-      // else if (this.filteredGenre == 'rock') {
-      //   return this.album.filter((element) => element.genre == 'Rock');
-      // }
-      // else if (this.filteredGenre == 'pop') {
-      //   return this.album.filter((element) => element.genre == 'Pop');
-      // }
-      // else if (this.filteredGenre == 'jazz') {
-      //   return this.album.filter((element) => element.genre == 'Jazz');
-      // }
-      // else if (this.filteredGenre == 'metal') {
-      //   return this.album.filter((element) => element.genre == 'Metal');
-      // }
+    filteredAlbum(inputValue){
+      this.album = this.filteredGenre;
+      // this.selectValue = inputValue;
+      if(inputValue == 'selected' ){
+        return this.album
+      }
+      else if (inputValue == 'Rock') {
+        return this.album =  this.album.filter((element) => element.genre == 'Rock');
+      }
+      else if (inputValue == 'Pop') {
+        return this.album = this.album.filter((element) => element.genre == 'Pop');
+      }
+      else if (inputValue == 'Jazz') {
+        return this.album = this.album.filter((element) => element.genre == 'Jazz');
+      }
+      else if (inputValue == 'Metal') {
+        return this.album = this.album.filter((element) => element.genre == 'Metal');
+      }
     }
   },
   // computed:{
-  //   filteredArray(event){
-  //     console.log(event.target.value);
-  //     // if(this.filteredGenre == 'selected' ){
-  //     //   return this.album
-  //     // }
-  //     // else if (this.filteredGenre == 'rock') {
-  //     //   return this.album.filter((element) => element.genre == 'Rock');
-  //     // }
-  //     // else if (this.filteredGenre == 'pop') {
-  //     //   return this.album.filter((element) => element.genre == 'Pop');
-  //     // }
-  //     // else if (this.filteredGenre == 'jazz') {
-  //     //   return this.album.filter((element) => element.genre == 'Jazz');
-  //     // }
-  //     // else if (this.filteredGenre == 'metal') {
-  //     //   return this.album.filter((element) => element.genre == 'Metal');
-  //     // }
+    // filteredAlbum(text){
+    //   this.album.filter((element) => console.log(element.genre));
+    //   console.log(text);
+    //   }
+  //   filteredAlbum(){
+  //     if(this.filteredGenre == 'selected' ){
+  //       return this.album
+  //     }
+  //     else if (this.filteredGenre == 'Rock') {
+  //       return this.album =  this.album.filter((element) => element.genre == 'Rock');
+  //     }
+  //     else if (this.filteredGenre == 'Pop') {
+  //       return this.album = this.album.filter((element) => element.genre == 'Pop');
+  //     }
+  //     else if (this.filteredGenre == 'Jazz') {
+  //       return this.album = this.album.filter((element) => element.genre == 'Jazz');
+  //     }
+  //     else if (this.filteredGenre == 'Metal') {
+  //       return this.album = this.album.filter((element) => element.genre == 'Metal');
+  //     }
   //   }
   // },
 };
