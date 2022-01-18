@@ -12,8 +12,7 @@
     </div>
     <div class="row p-4">
       <Search 
-        @searchAlbum="filteredAlbum($event)"
-         />
+        @searchAlbum="filteredAlbum($event)"/>
       <!-- <select 
         id="select" 
         class="form-select" 
